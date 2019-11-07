@@ -44,8 +44,7 @@ namespace Ejercicio3
             //Decidí realizar el ejercicio de manera más dinámica y agregué dos variedades de ejercicios. 
             //En una se aumenta el número en cierto porcentaje y en otra de reduce.
             switch (typeOfExercise)
-            {
-               
+            {               
                 case 0:
                     output[0] = String.Format("Aumentar en un {0} % la cantidad de {1}, resulta en:",percentage, String.Format("{0:n}", num));
                     output[1] = Convert.ToString((num * percentage/100) + num);
