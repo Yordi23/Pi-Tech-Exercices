@@ -3,8 +3,6 @@ using System.IO;
 
 namespace Ejercicio_1
 {
-    //Nota: Para probar la solución solo es necesario crear un objeto de tipo Ejercicio1, llamar el método "Sort"
-    //      e ingresar por parámetro la ruta del archivo que contiene los datos entrada.
     public class Ejercicio1
     {
         private string[] data;

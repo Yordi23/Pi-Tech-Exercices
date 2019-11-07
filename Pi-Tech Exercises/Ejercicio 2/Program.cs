@@ -6,7 +6,8 @@ namespace Ejercicio_2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Ejercicio2 ejercicio = new Ejercicio2();
+            ejercicio.GenerateExercise(@"C:\Users\yordi\Desktop\Prueba\Ejercicio2\Test.json");
         }
     }
 }
