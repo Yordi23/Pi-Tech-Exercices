@@ -41,7 +41,8 @@ namespace Ejercicio3
             percentage = rdn.Next(101);
             typeOfExercise = rdn.Next(2);
             
-            //Dependiendo de el tipo de ejercicio se realiza una operación u otra
+            //Decidí realizar el ejercicio de manera más dinámica y agregué dos variedades de ejercicios. 
+            //En una se aumenta el número en cierto porcentaje y en otra de reduce.
             switch (typeOfExercise)
             {
                
