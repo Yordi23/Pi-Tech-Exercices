@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Ejercicio_2
 {
+    //Objeto que representa un Ejercicio de Suma.
     class EjercicioSuma
     {
         public string instruction { get; set; }

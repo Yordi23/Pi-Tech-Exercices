@@ -7,7 +7,13 @@ namespace Ejercicio_2
         static void Main(string[] args)
         {
             Ejercicio2 ejercicio = new Ejercicio2();
-            ejercicio.GenerateExercise(@"C:\Users\yordi\Desktop\Prueba\Ejercicio2\Test.json");
+
+           
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            path += "\\EjercicioSuma.json";
+            ejercicio.GenerateExercise(path);
+
+            Console.WriteLine("E; archivo en formato Json ha sido exportado exitosamente en el escritorio.");
         }
     }
 }
