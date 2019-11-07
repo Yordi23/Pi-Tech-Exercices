@@ -6,12 +6,26 @@ namespace Ejercicio4
 {
     class Ejercicio4
     {
-        public string Convert (int num)
+        public void GenerateExercise(string path)
+        {
+            Random rdn = new Random();
+            string[] options = new string[4];
+            string instruction = "Escribe el número siguiente presionando los botones en el orden correcto.";
+
+            int num = rdn.Next(100001);
+            string problem = String.Format("{0:n0}",num);
+            string result = Convert(num);
+
+            options = GenerateOptions(result);
+            
+        }
+
+        private string Convert (int num)
         {
             string output = "";
 
             string[] units = {"cero", "uno", "dos" ,"tres" ,"cuatro" ,"cinco" ,"seis" ,"siete" ,"ocho" ,"nueve","diez", 
-                "once", "doce", "trece", "catorce", "quince", "diezciseis", "diecisiete", "dieciocho", "diecinueve" };
+                              "once", "doce", "trece", "catorce", "quince", "diezciseis", "diecisiete", "dieciocho", "diecinueve" };
             string[] tens ={"veinte", "treinta","cuarenta","cincuenta","sesenta", "setenta", "ochenta", "noventa"};
             string[] hundreds = {"quinientos",null,"setecientos",null,"novecientos"};
 
@@ -25,9 +39,11 @@ namespace Ejercicio4
 
                 if (unit == 0) output = tens[ten - 2];
 
+                else if (num < 30) output = "veinti" + Convert(num - 20);
+
                 else
                 {
-                    output = Convert(((num / 10) * 10)) + " ";
+                    output = Convert(((num / 10) * 10)) + " y ";
 
                     if (unit == 1) output += "uno";
                     else output += Convert(num % 10);
@@ -69,9 +85,46 @@ namespace Ejercicio4
 
         }
 
+        private string[] GenerateOptions(string result)
+        {
+            string[] arr = new string[6];
+            string[] arrResult = SeparateNumber(result);
+
+            return null;
+        }
+
+        private string[] SeparateNumber(string num)
+        {
+            List<string> list = new List<string>();
+            string segment = "";
+            int count = 0;
+
+            for (int i = 0; i < num.Length; i++)
+            {
+                if (count == 2)
+                {
+                    list.Add(segment);
+                    count = 0;
+                    segment = "";
+                }
+                else
+                {
+                    if (num[i] == ' ') count++;
+                    else if (num[i] == 'y') count--;
+
+                    if (count == 2) continue;
+                    segment += num[i];
+                }
+                
+
+            }
+
+            return list.ToArray();
+        }
+
         public int[] GenerateArray()
         {
-            int[] arr = new int[1000];
+            int[] arr = new int[100000];
             for (int i = 0; i < arr.Length; i++)
             {
                 arr[i] = i;
