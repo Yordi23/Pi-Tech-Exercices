@@ -8,12 +8,15 @@ namespace Ejercicio_2
 {
     class Ejercicio2
     {   
+        //Nota: A pesar de que en el ejemplo se muestra que dentro del archivo Json el campo de 
+        //resultado es igual a 0, asumí que este campo corresponde al resultado de realizar la 
+        //operación de suma.
         public void GenerateExercise(string path)
         {
             string instruction = "Selecciona el resultado de la siguiente suma.";
             string[] problem = new string[2];
             string[] options = new string[4];
-            int resutl = 0;
+            int result = 0;
             Random rdn = new Random();
 
 
@@ -23,21 +26,19 @@ namespace Ejercicio_2
                 //Debido a que no se especifica en el ejercicio, elegí arbitrariamente que 
                 //el número máximo para realizar las operaciones de suma sería 100,000.
                 int num = rdn.Next(100001);
-                resutl += num;
+                result += num;
                 problem[i] = String.Format("{0:n0}", num);
             }
 
 
-            options[rdn.Next(4)] = String.Format("{0:n0}", resutl);
+            options[rdn.Next(4)] = String.Format("{0:n0}", result);
             options = GenerateOptions(options);
 
 
-            EjercicioSuma ejercicio = new EjercicioSuma(instruction,problem,options,resutl);
+            EjercicioSuma ejercicio = new EjercicioSuma(instruction,problem,options,result);
             SerializeAndExport(path, ejercicio);
         }
-        //Nota: A pesar de que en el ejemplo se muestra que dentro del archivo Json el campo de 
-        //resultado es igual a 0, asumí que este campo corresponde al resultado de realizar la 
-        //operación de suma.
+        
 
 
         //Se generan opciones aleatorias.
@@ -47,7 +48,7 @@ namespace Ejercicio_2
 
             for (int i = 0; i < arr.Length; i++)
             {
-                //El resultado posible más grande es 200,000 (100,000 + 100,000)
+                //El máximo resultado posible es 200,000 (100,000 + 100,000)
                 if (arr[i] == null) arr[i] = String.Format("{0:n0}", rdn.Next(200001));
             }
 

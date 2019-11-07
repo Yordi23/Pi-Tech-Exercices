@@ -13,7 +13,7 @@ namespace Ejercicio_2
             path += "\\EjercicioSuma.json";
             ejercicio.GenerateExercise(path);
 
-            Console.WriteLine("E; archivo en formato Json ha sido exportado exitosamente en el escritorio.");
+            Console.WriteLine("El archivo en formato Json ha sido exportado exitosamente en el escritorio.");
         }
     }
 }

@@ -6,7 +6,14 @@ namespace Ejercicio3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Ejercicio3 ejercicio = new Ejercicio3();
+
+
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            path += "\\EjercicioPorcentaje.json";
+            ejercicio.GenerateExercise(path);
+
+            Console.WriteLine("El archivo en formato Json ha sido exportado exitosamente en el escritorio.");
         }
     }
 }
