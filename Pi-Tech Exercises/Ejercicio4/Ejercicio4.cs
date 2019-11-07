@@ -48,6 +48,16 @@ namespace Ejercicio4
 
                 else output = string.Format("{0} {1}", Convert((num / 100) * 100), Convert(num % 100));
             }
+            else if (num == 1000) output = "mil";
+
+            else if (num < 2000) output = "mil " + Convert(num % 1000);
+
+            else if (num <= 100000)
+            {
+                output = Convert((num / 1000)) + " mil";
+                
+                if ((num % 1000) > 0) output += " " + Convert(num % 1000);
+            }
 
 
             return output;
@@ -56,7 +66,7 @@ namespace Ejercicio4
 
         public int[] GenerateArray()
         {
-            int[] arr = new int[1000];
+            int[] arr = new int[100001];
             for (int i = 0; i < arr.Length; i++)
             {
                 arr[i] = i;
