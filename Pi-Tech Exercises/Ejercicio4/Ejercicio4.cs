@@ -12,7 +12,6 @@ namespace Ejercicio4
 
             string[] units = {"cero", "uno", "dos" ,"tres" ,"cuatro" ,"cinco" ,"seis" ,"siete" ,"ocho" ,"nueve","diez", 
                 "once", "doce", "trece", "catorce", "quince", "diezciseis", "diecisiete", "dieciocho", "diecinueve" };
-            //string[] specials = {"once", "doce","trece","catorce", "quince","diezciseis", "diecisiete", "dieciocho", "diecinueve"};
             string[] tens ={"veinte", "treinta","cuarenta","cincuenta","sesenta", "setenta", "ochenta", "noventa"};
             string[] hundreds = {"quinientos",null,"setecientos",null,"novecientos"};
 
@@ -22,11 +21,17 @@ namespace Ejercicio4
             {
                 int ten = num / 10;
                 int unit = num % 10;
-                
+
 
                 if (unit == 0) output = tens[ten - 2];
 
-                else output = string.Format("{0} y {1}", Convert(((num / 10) * 10)), (unit == 1 ? "uno" : Convert(num % 10)));
+                else
+                {
+                    output = Convert(((num / 10) * 10)) + " ";
+
+                    if (unit == 1) output += "uno";
+                    else output += Convert(num % 10);
+                }
             }
             
             else if (num == 100) output = "cien";
@@ -46,7 +51,7 @@ namespace Ejercicio4
                     else output = Convert((num / 100)) + "cientos";
                 }
 
-                else output = string.Format("{0} {1}", Convert((num / 100) * 100), Convert(num % 100));
+                else output = Convert((num / 100) * 100) + " " + Convert(num % 100);
             }
             else if (num == 1000) output = "mil";
 
@@ -66,7 +71,7 @@ namespace Ejercicio4
 
         public int[] GenerateArray()
         {
-            int[] arr = new int[100001];
+            int[] arr = new int[1000];
             for (int i = 0; i < arr.Length; i++)
             {
                 arr[i] = i;
