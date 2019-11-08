@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Ejercicio4
 {
@@ -25,10 +24,11 @@ namespace Ejercicio4
 
         }
 
+        //Convierte un número entero a su equivalente en letras.
         private string Convert (int num)
         {
             string output = "";
-
+            //Se declaran aquellas palabras que sirven de base para formular los números en letra.
             string[] units = {"cero", "uno", "dos" ,"tres" ,"cuatro" ,"cinco" ,"seis" ,"siete" ,"ocho" ,"nueve","diez", 
                               "once", "doce", "trece", "catorce", "quince", "diezciseis", "diecisiete", "dieciocho", "diecinueve" };
             string[] tens ={"veinte", "treinta","cuarenta","cincuenta","sesenta", "setenta", "ochenta", "noventa"};
@@ -48,6 +48,7 @@ namespace Ejercicio4
 
                 else
                 {
+                    
                     output = Convert(((num / 10) * 10)) + " y ";
 
                     if (unit == 1) output += "uno";
@@ -90,6 +91,7 @@ namespace Ejercicio4
 
         }
 
+        //Se generan opciones aleatorias.
         private string[] GenerateOptions(string result)
         {
             Random rdn = new Random();
@@ -99,7 +101,6 @@ namespace Ejercicio4
 
             output = PoblateOutput(arrResult, output, remainSpace);
 
-            
             while (remainSpace > 0)
             {
                 string[] rdnNumber = SeparateNumber(Convert(rdn.Next(100001)));
@@ -107,10 +108,10 @@ namespace Ejercicio4
                 remainSpace -= rdnNumber.Length;
             }
 
-
             return output;
         }
 
+        //Separa las oraciones en pares de palabras
         private string[] SeparateNumber(string num)
         {
             List<string> output = new List<string>();
@@ -144,6 +145,7 @@ namespace Ejercicio4
             return output.ToArray();
         }
 
+        //Llena el arreglo output mientras este posea algun espacio con valor null.
         public string[] PoblateOutput(string[] arr, string[] output, int remainSpace)
         {
             Random rdn = new Random();
@@ -165,27 +167,6 @@ namespace Ejercicio4
 
 
             return output;
-        }
-
-        public int[] GenerateArray()
-        {
-            int[] arr = new int[100000];
-            for (int i = 0; i < arr.Length; i++)
-            {
-                arr[i] = i;
-            }
-            return arr;
-        }
-
-        public void Test()
-        {
-            int[] arr = GenerateArray();
-
-            for (int i = 0; i < arr.Length; i++)
-            {
-                Console.WriteLine(Convert(arr[i]));
-            }
-            Console.ReadKey();   
         }
 
         //Se convierte el objeto a formato Json y se exporta.

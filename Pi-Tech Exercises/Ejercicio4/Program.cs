@@ -8,8 +8,6 @@ namespace Ejercicio4
         {
             Ejercicio4 ejercicio = new Ejercicio4();
 
-            //ejercicio.Test();
-
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             path += "\\EjercicioEscrituraNumeros.json";
             ejercicio.GenerateExercise(path);

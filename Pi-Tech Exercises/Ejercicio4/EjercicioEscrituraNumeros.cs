@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ejercicio4
+﻿namespace Ejercicio4
 {
+    //Clase que representa los Ejercicio de Escritura de Números.
     class EjercicioEscrituraNumeros
     {
         public string instruction { get; set; }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ejercicio_2
+﻿namespace Ejercicio_2
 {
     //Clase que representa los Ejercicio de Suma.
     class EjercicioSuma

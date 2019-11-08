@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ejercicio3
+﻿namespace Ejercicio3
 {
     //Clase que representa los Ejercicio de Porcentaje.
     class EjercicioPorcentaje
