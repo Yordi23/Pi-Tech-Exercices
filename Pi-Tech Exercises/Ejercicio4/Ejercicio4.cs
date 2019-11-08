@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Ejercicio4
@@ -17,7 +19,10 @@ namespace Ejercicio4
             string result = Convert(num);
 
             options = GenerateOptions(result);
-            
+
+            EjercicioEscrituraNumeros ejercicio = new EjercicioEscrituraNumeros(instruction, problem, options, result);
+            SerializeAndExport(path, ejercicio);
+
         }
 
         private string Convert (int num)
@@ -87,15 +92,28 @@ namespace Ejercicio4
 
         private string[] GenerateOptions(string result)
         {
-            string[] arr = new string[6];
+            Random rdn = new Random();
+            string[] output = new string[6];
             string[] arrResult = SeparateNumber(result);
+            int remainSpace = 6 - arrResult.Length;
 
-            return null;
+            output = PoblateOutput(arrResult, output, remainSpace);
+
+            
+            while (remainSpace > 0)
+            {
+                string[] rdnNumber = SeparateNumber(Convert(rdn.Next(100001)));
+                output = PoblateOutput(rdnNumber, output,remainSpace);
+                remainSpace -= rdnNumber.Length;
+            }
+
+
+            return output;
         }
 
         private string[] SeparateNumber(string num)
         {
-            List<string> list = new List<string>();
+            List<string> output = new List<string>();
             string segment = "";
             int count = 0;
 
@@ -103,9 +121,10 @@ namespace Ejercicio4
             {
                 if (count == 2)
                 {
-                    list.Add(segment);
+                    output.Add(segment);
                     count = 0;
                     segment = "";
+                    i--;
                 }
                 else
                 {
@@ -115,11 +134,37 @@ namespace Ejercicio4
                     if (count == 2) continue;
                     segment += num[i];
                 }
-                
+
 
             }
 
-            return list.ToArray();
+            if (segment[0] == 'y') segment = segment.Substring(2);
+            output.Add(segment);
+
+            return output.ToArray();
+        }
+
+        public string[] PoblateOutput(string[] arr, string[] output, int remainSpace)
+        {
+            Random rdn = new Random();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                int num = rdn.Next(6);
+
+                if (output[num] == null)
+                {
+                    output[num] = arr[i];
+                    remainSpace--;
+                }
+
+                else if (remainSpace == 0) break;
+
+                else i--;
+            }
+
+
+            return output;
         }
 
         public int[] GenerateArray()
@@ -141,6 +186,13 @@ namespace Ejercicio4
                 Console.WriteLine(Convert(arr[i]));
             }
             Console.ReadKey();   
+        }
+
+        //Se convierte el objeto a formato Json y se exporta.
+        private void SerializeAndExport(string path, EjercicioEscrituraNumeros ejercicio)
+        {
+            var ejercicioJSon = JsonConvert.SerializeObject(ejercicio);
+            File.WriteAllText(path, ejercicioJSon);
         }
     }
 }
